@@ -1,4 +1,5 @@
-#JIRAVIEW
+# JIRAVIEW
+
 Can your JIRA instance do this?
 ![fancy plot](plots/days-in-status.png "Fancy plot")
 
@@ -12,18 +13,22 @@ The scripts talk to JIRA via the REST API and extract all data for issues that m
 
 An intermediate data store (MongoDB) is used because JIRA has relatively high response times and we want to be able to use all issue data at any time.
 
-##What's in the box
-There are several thing in here…
-###python
+## What's in the box
+
+There are several things in here.
+
+### Python
 The python folder contains the core scripts that perform data extraction and transformation.
 
-### ansible
+### Ansible
 There is an Ansible playbook that can take a bare CentOS installation and install all dependencies required for running the jiraview scripts (i.e. Python + MongoDB), R and Jenkins, which we often use for scheduling things. With this setup you can create a machine that runs the JIRA extraction and R scripts to generate plots on a certain schedule.
 
 ### R
+
 An example R script that generates a number of (not necessarily) useful plots from the CSV files.
 
 ## Using
+
 (Assumes prior knowledge of python virtual environments and the virtualenvwrapper.)
 
 In your favorite shell, take these steps:
