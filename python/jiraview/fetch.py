@@ -1,7 +1,7 @@
 import requests
 from requests.adapters import HTTPAdapter
 import json
-import urlparse
+from urllib import parse as urlparse
 import sys
 import datetime
 import argparse
