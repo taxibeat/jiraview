@@ -13,7 +13,7 @@ def save_dataset(name, jql = None, issue_collection = None, jira_url = None, jir
     dataset = client.jiraview.datasets.find_one({ 'name' : name} ) or {}
 
     if dataset == {} and (jql == None or jira_url == None or issue_collection == None):
-        print 'Dataset "%s" does not exist yet. Required to specify at least jql, collection and url for new dataset definitions.' % name
+        print('Dataset "%s" does not exist yet. Required to specify at least jql, collection and url for new dataset definitions.' % name)
         sys.exit(1)
 
     dataset['name'] = name
@@ -26,8 +26,8 @@ def save_dataset(name, jql = None, issue_collection = None, jira_url = None, jir
     if reset:
         dataset['last_update'] = None
 
-    client.jiraview.datasets.save(dataset)
-    print 'Saved: %s' % str(dataset)
+    client.jiraview.datasets.replace_one(filter={}, replacement=dataset, upsert=True)
+    print('Saved: %s' % str(dataset))
 
 def delete_dataset(name):
     pass

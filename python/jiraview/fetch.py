@@ -17,7 +17,7 @@ def create_client():
 
 def log(verbose, s):
     if verbose:
-        print s
+        print(s)
 
 def fetch_summaries(session, jql, jira_url, verbose = False):
     search_url = urlparse.urljoin(jira_url + '/' if not jira_url.endswith('/') else jira_url, 'rest/api/2/search')
@@ -82,7 +82,7 @@ def parse_args():
 def find_dataset(name):
     dataset = client.jiraview.datasets.find_one({ 'name' : name })
     if not dataset:
-        print 'Could not find dataset named %s' % args.name
+        print('Could not find dataset named "%s"' % name)
         sys.exit(1)
 
     return dataset
