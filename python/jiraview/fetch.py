@@ -108,7 +108,7 @@ def main():
     user = dataset.get('jira_user')
     password = dataset.get('jira_password')
     session = requests.Session()
-    session.mount(dataset['jira_url'], HTTPAdapter(max_retries=10))
+    session.mount(dataset['jira_url'], HTTPAdapter())
     if (user and password):
         session.auth = (user, password)
 
