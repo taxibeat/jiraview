@@ -37,7 +37,7 @@ In your favorite shell, take these steps:
 	# The database name that will be used is 'jiraview'
 	
 	mkvirtualenv jiraview
-	git clone git@github.com:godatadriven/jiraview.git
+	git clone git@github.com:taxibeat/jiraview.git
 	cd jiraview/python
 	
 	pip install -r requirements.txt
