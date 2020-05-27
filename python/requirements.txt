@@ -1,4 +1,4 @@
 iso8601==0.1.12
 pymongo==3.10.1
-requests==1.2.3
+requests==2.23.0
 urllib3==1.25.9
