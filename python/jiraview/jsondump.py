@@ -15,7 +15,7 @@ def create_client():
 def find_dataset(name):
     dataset = client.jiraview.datasets.find_one({ 'name' : name })
     if not dataset:
-        print 'Could not find dataset named %s' % args.name
+        print('Could not find dataset named %s' % args.name)
         sys.exit(1)
 
     return dataset
