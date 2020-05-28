@@ -33,12 +33,13 @@ An example R script that generates a number of (not necessarily) useful plots fr
 
 In your favorite shell, take these steps:
 
-	# Make sure you are running MongoDB on localhost without authentication required
+	# Make sure you are running MongoDB* on localhost without authentication required
 	# The database name that will be used is 'jiraview'
 	
-	mkvirtualenv jiraview
 	git clone git@github.com:taxibeat/jiraview.git
-	cd jiraview/python
+	cd jiraview
+	mkvirtualenv jiraview	
+	cd python
 	
 	pip install -r requirements.txt
 	cd jiraview
@@ -67,3 +68,25 @@ Other available scripts are:
 - xes.py, which create a XES XML file that can be used in the [ProM open source process mining tool](http://www.processmining.org/prom/start).
 
 Use the -h option on each script to find all command line parameters.
+
+### Installing MongoDB locally on MacOS
+
+```
+	brew tap mongodb/brew
+	brew install mongodb-community
+
+	# And starting it (also possible to start as a daemon)
+	mongod --config /usr/local/etc/mongod.conf
+```
+
+### Fetch & dump JIRA issues to a JSON
+
+Typically, you want to configure a dataset query, then fetch all related issues and dump data to JSON file:
+
+``` 	
+ 	python dataset.py -jql 'project in ("<Your-project-id-1>", "<Your-project-id-2>") AND updated >= last_update' -collection dataset -user <Your-Jira-user-id> -password <Your-Jira-password> -url https://jira.<your-company>.com/ <dataset-name>
+ 
+ 	python fetch.py -v <dataset-name>
+ 
+ 	python jsondump.py -basename <file-base-name> -dir . <dataset-name>
+```
