@@ -102,7 +102,7 @@ def main():
     last_update = dataset.get('last_update') or datetime.datetime(1981, 6, 9)
     # substract one day to be safe with greater than / equals stuff. Also, I don't know how well JIRA's multi timezone support works (or mine).
     last_update -= datetime.timedelta(days = 1)
-    jql = dataset['jql'].replace('last_update', last_update.strftime('%Y-%m-%d'))
+    jql = dataset['jql'].replace('last_update', last_update.strftime('\'%Y-%m-%d\''))
     log(args.verbose, 'Using JQL query: %s' % jql)
 
     user = dataset.get('jira_user')
